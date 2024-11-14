@@ -1,18 +1,16 @@
 import "./App.css";
-import { Hello, HelloPersion } from "./component/Hello.js";
-import { Menu, Item, Header } from "./component/Header.js";
-import { Hola, hiAll, hiYou } from "./component/hola.js";
-import Cart from "./component/Cart.js";
-import Login from "./component/Login.js";
+import Header from "./component/Header.js";
+import Footer from "./component/footer.js";
+import { Outlet } from "react-router-dom";
 function App() {
   return (
     <>
       <div className="App">
-        <Hello />
         <Header />
-        <Hola />
-        <Cart />
-        <Login />
+        <div className="container">
+          <Outlet />
+        </div>
+        <Footer />
       </div>
     </>
   );

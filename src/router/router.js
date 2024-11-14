@@ -2,9 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import Cart from "../component/Cart";
 import App from "../App";
 import { Hello } from "../component/Hello";
-import Product from "../component/User/getAllProduct";
+import AllProducts from "../component/User/getAllProduct";
 import Login from "../component/Login";
 import Group from "../component/User/getAllGroup";
+import DetailProduct from "../component/User/getDetailProduct";
+import ProductTheGroup from "../component/User/getProductTheGroup";
 export default createBrowserRouter([
   {
     element: <App />,
@@ -18,8 +20,16 @@ export default createBrowserRouter([
         path: "/group",
       },
       {
-        element: <Product />,
-        path: "/product",
+        element: <AllProducts />,
+        path: "/listProducts",
+      },
+      {
+        element: <ProductTheGroup />,
+        path: "/product/:idGroup",
+      },
+      {
+        element: <DetailProduct />,
+        path: "/detailProduct/:id",
       },
       {
         element: <Login />,
@@ -33,6 +43,7 @@ export default createBrowserRouter([
         element: <Hello />,
         path: "/hello",
       },
+
       {
         element: <h1>404 - Không tìm thấy trang</h1>,
         path: "/*",

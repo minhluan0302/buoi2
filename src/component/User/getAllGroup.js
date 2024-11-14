@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 const ListGroup = () => {
   const [group, setGroup] = useState([]);
 
@@ -24,9 +24,9 @@ const ListGroup = () => {
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{item.ten}</h5>
-                <a href="#" className="btn btn-primary">
-                  Xem chi tiết
-                </a>
+                <Link to={`/product/${item.id}`} className="btn btn-dark">
+                  Xem sản phẩm
+                </Link>
               </div>
             </div>
           </div>

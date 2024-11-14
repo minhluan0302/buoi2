@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-const ListProduct = () => {
+import { Link, useParams } from "react-router-dom";
+
+const Product = () => {
+  const { idGroup } = useParams(); // Lấy idGroup từ URL
   const [products, setProducts] = useState([]);
-  console.log(process.env.REACT_APP_API_SERVER);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_SERVER}/listProducts`)
+      .get(`${process.env.REACT_APP_API_SERVER}/product/${idGroup}`) // Dùng idGroup trong API
       .then((res) => {
         setProducts(res.data);
       })
       .catch((error) => {
         console.error("Có lỗi xảy ra khi lấy dữ liệu sản phẩm:", error);
       });
-  }, []);
+  }, [idGroup]); // Thêm idGroup vào dependencies để gọi lại API khi idGroup thay đổi
 
   return (
     <div className="container mt-4">
@@ -23,16 +24,15 @@ const ListProduct = () => {
           products.map((product) => (
             <div key={product.id} className="col-md-4 mb-4">
               <div className="card">
-                <img
-                  src={product.hinhanh || "https://via.placeholder.com/150"}
+                {/* <img
+                  src={product.hinhanh || "https://via.placeholder.com"}
                   className="card-img-top"
                   alt={product.ten}
-                />
+                /> */}
                 <div className="card-body">
                   <h5 className="card-title">{product.ten}</h5>
                   <p className="card-text">Giá: {product.gia} VNĐ</p>
                   <p className="card-text">Mô tả: {product.mota}</p>
-                  <h1>{product.id}</h1>
                   <Link
                     to={`/detailProduct/${product.id}`}
                     className="btn btn-dark"
@@ -51,4 +51,4 @@ const ListProduct = () => {
   );
 };
 
-export default ListProduct;
+export default Product;

@@ -3,10 +3,11 @@ import Cart from "../component/Cart";
 import App from "../App";
 import { Hello } from "../component/Hello";
 import AllProducts from "../component/User/getAllProduct";
-import Login from "../component/Login";
+// import Login from "../component/Login";
 import Group from "../component/User/getAllGroup";
 import DetailProduct from "../component/User/getDetailProduct";
 import ProductTheGroup from "../component/User/getProductTheGroup";
+import Login from "../component/User/login";
 export default createBrowserRouter([
   {
     element: <App />,
@@ -19,6 +20,10 @@ export default createBrowserRouter([
         element: <Group />,
         path: "/group",
       },
+      // {
+      //   element: <Login />,
+      //   path: "/login",
+      // },
       {
         element: <AllProducts />,
         path: "/listProducts",
